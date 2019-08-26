@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Audio Formats Comparison</title>
+
+    <link href="../css/styles.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="../img/fmedia.png">
+</head>
+<body>
+    <header class="header header--simple">
+        <div class="header__container header__container--simple">
+            <div class="logo logo--main">
+                <img src="../img/fmedia.png" width="22" height="22" class="logo__img">
+                <a href="../" class="logo__link fmedia">fmedia</a>
+            </div>
+            <h1 class="title title--main title--simple title--article">
+                Audio Formats Comparison
+            </h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="article">
+            <div class="article__head">
+                <div class="breadcrumbs">
+                    <a href="../" class="breadcrumbs__item">fmedia</a>
+                    <span class="breadcrumbs__item">Articles</span>
+                    <span class="breadcrumbs__item">Audio Formats Comparison</span>
+                </div>
+                <div class="article__date">
+                    by Simon Zolin,
+                    <span class="article__with-update">Aug 29 2016 (upd. Mar 27, 2017)</span>
+                </div>
+            </div>
+
+            <div class="article__content">
+<p>The goal of this article is to show the differences between several audio formats and codecs.  It covers lossless (FLAC, ALAC, APE, WavPack) and lossy audio codecs (Vorbis, Opus, MPEG, AAC, Musepack).  There is information about file formats that are used for storing audio data, meta tags supported by different file formats and the results of some performance tests.  In the end of this article I'll describe how you can perform similar tests by yourself.</p>
+
+<p>This article doesn't claim which audio format is the best and which is the worst, because to do that it would require to test each format with a wide variety of music, with a large variety of audio settings (encoder settings, audio format), with different codec implementations and on different hardware.  I think it's impossible to pick the best format for *every* use, especially from lossy audio formats.  However, this document can help you to decide which audio format is more suitable for your needs.</p>
+
+<p><b>Contents:</b></p>
+<ul>
+    <li><a href="#overall">Overall</a></li>
+    <li><a href="#fileformats">Audio File Formats Comparison</a></li>
+    <li><a href="#perftests">Performance Tests</a></li>
+    <li><a href="#howtotest">Test By Yourself</a></li>
+</ul>
+
+<a name="overal"><h3>OVERALL</h3></a>
+
+<p>This table shows the short summary information about audio formats and accumulated results of the performance tests.</p>
+
+<div class="article__table-wrap">
+    <table class="fixed" id="tbl_overall"></table>
+</div>
+
+<p>Compression Ratio: the difference between uncompressed and compressed file, applies to Lossless only, the lower - the better.</p>
+<p>Decoding/Encoding Speed shows how many audio samples are processed per time unit, the higher - the better.  This is an average value of all tests shown below, read section "Performance Tests" for more details.</p>
+
+<p><img src="perf.png" title="Audio formats performance chart" /><br/>
+<span style="color:grey;">Chart 1. Performance of audio formats.</span></p>
+
+<p>Audio data inside a WAVE file is stored uncompressed, it doesn't require any decoding or encoding work to do, therefore its compression ratio is 1:1 and the speed is unlimited.  Actually, there is a very small amount of time required to read and write WAVE files, but I chose not to include it here, because it only shows the speed of system memory and disk.</p>
+
+<p>All lossless codecs have similar compression ratio.  However, decoding speed is different: FLAC is almost 3 times faster than WavPack and 6 times faster than APE.  Although these numbers were produced by fmedia, other audio tools show very similar decoding performance.</p>
+
+<p>As for lossy codecs, I can't show any proof, but other sources claim that sound quality of Vorbis and AAC are better than MPEG-1 Layer-3 for the same bitrate.  In other words, to achieve the same quality of MP3's 320kbps, Vorbis and AAC require less bitrate value, e.g. just 256kbps, but this is arguable.  However, the same sources also claim that for AAC there's a big difference in sound quality between files produced by different encoders, and that libfdk-aac has quite good quality.</p>
+
+
+<a name="fileformats"><h3>AUDIO FILE FORMATS COMPARISON</h3></a>
+
+<p>In this section I present to you the comparison of audio file formats.  Audio data compressed with one of the codec listed above is stored within an audio file, each codec uses its own data container format.  They all have their similarities and differences, so the table below gathers everything together.</p>
+
+<div class="article__table-wrap">
+    <table class="fixed" id="tbl_filefmt"></table>
+</div>
+
+<p>More details and notes on each aspect:</p>
+
+<h4>Lossless</h4>
+<p>Whether a format supports lossless audio.  A lossless audio encoder compresses audio in a way that after decompression you'll have a 100% quality audio, exactly as the original source.  Such encoder works similar to the way how ZIP packer compresses text files, so after you unpack it the text is exactly the same as it was: without any words missing or letters interchanged.  MP4 may contain lossless (ALAC) and lossy (AAC) audio.  WavPack supports lossy audio as well as lossless.</p>
+
+<h4>Fast accurate seeking</h4>
+<p>Whether it's possible to effectively find within a physical stream an audio frame containing the target audio sample.  To seek on an audio file it's required to convert the audio sample number into a file position where the needed audio data is stored.  For a constant-bitrate stream like WAVE and MP3 CBR it's easy to find the needed audio frame in just one file seek request.</p>
+
+<p>But for a variable-bitrate stream a so called "seek table" must be used to achieve faster seeking.  Using seek table one can find in which place within the file the needed audio is stored.  Having a seek table is vital for a fast seeking within a large stream with a non-linear distribution of audio data.  Without it, the seeking algorithm needs to guess the most probable file offset, perform a file read from this position, find an audio frame, get its audio position and if it's not the frame we're looking for, repeat the same algorithm over and over again until the needed frame is found.  From my experience, this cycle can be repeated up to 15 times depending on a format and audio data, and the most performance-expensive operation is reading from an arbitrary file offset.  In fmedia I succeeded to achieve better precision in seeking on FLAC and WavPack files than the mainstream libraries themselves, reducing the number of seek requests, but still this is all the unneeded work for the system.</p>
+
+<p>FLAC supports this feature but only if encoder has added a seek table during creation of a file.</p>
+
+<p>Although an APE file always has a seek table, APE frames are very large and this slows down seeking anyway.  This is because media player still needs to decode the whole frame to reach the target audio sample and, knowing that APE decoding is rather slow, it may take even more time than the couple of excessive file reads.</p>
+
+<p>Seeking in .mp3 files is always fast, not just for CBR but also for VBR files, because they usually have Xing or VBRI tags containing a seek table.  But .mp3 files have one big disadvantage that no other format has: there's no information about audio position in MPEG frames.  After a file seek is done, we can only hope that this position is in fact our target.  So for sample-accurate seeking in mp3 it's needed to have a complete table of MPEG frames and file offsets.  A solution to this problem might be to keep track of all frames that are already processed and then to scan forward all next frames before we reach the target.</p>
+
+<h4>Streaming</h4>
+<p>Whether it's possible to stream the audio over an unseekable media.  .wav and .mp4 containers may have meta data stored at the end of file, making the streaming of such files impossible.</p>
+
+<h4>CRC</h4>
+<p>Whether a format provides a checksum to ensure that audio data isn't corrupted.  The point here is that the corrupted audio data should be skipped, it shouldn't be played because it can produce unbearable sound.  mp3 format has this feature but noone uses it in practice.</p>
+
+<h4>No EOF reading</h4>
+<p>Whether reading from the end of file isn't required before starting playback.  This is a pure performance issue and the only 100% winner here is FLAC format.</p>
+
+<p>OGG.  Together with the lack of seek table inability to tell whether an OGG page is the target one makes seeking in OGG the most difficult task compared to all other formats.  Since the OGG header isn't enough to get the total audio length, it's required to read from the end of file.  This is the most annoying drawback of OGG format.</p>
+
+<p>Other formats don't actually *require* seeking to EOF, but still it's performed if the format supports APE tag or ID3v1 because media player usually reads meta tags before starting playback.  APE tag is stored in the end of file probably because it's easier to expand it without the need to rewrite the whole file as it would require for uncarefully crafted ID3v2.  However, the solution to this problem is simple: to use padding.  For example, for an audio file of size 6MB, even if its tags would be 64KB of size (which is never useful, though) with 63KB filled with spaces, it's just 1% of the whole file size.  The more realistic example is when tags with all artist/album/title info and lyrics embedded would only result in ~10KB without an album cover picture.  And because album covers and pictures are usually stored within tags only one time - at the time of creation, - storing tags in the end of file is just pointless, in my opinion.</p>
+
+
+<a name="perftests"><h3>PERFORMANCE TESTS</h3></a>
+
+<p>Obviously, performance tests don't show the speed of audio format but the speed of specific encoder/decoder implementation.  Don't judge too quickly, the results here depend dramatically on an audio library that is used to do the audio processing, operating system, processor architecture and other computer hardware.  The size of encoded files can also vary: although I try to use similar settings for each encoder, they still aren't identical.</p>
+
+<p>These tests were performed by fmedia v0.16 on 64-bit Windows, Intel Core i5-4200U.  The accuracy of these results should be very high because they show how much time is spent for processing the track, not taking into account the time needed to start the system process, read configuration or do other irrelevant work.  Also, fmedia spends 95%..99% of the time inside 3rd party libraries - mainstream codec implementations like libvorbis, libFLAC, and others, - and due to its very low footprint fmedia actually shows the pure performance of those libraries running in specific conditions.  Note: fmedia can't encode into APE, WavPack and ALAC. These test files were created using other free tools.</p>
+
+<p>Another small note is that the same tests usually run slightly faster on Linux, probably due to the fact that Windows version of fmedia and all audio libraries are built with gcc cross-platform tools that might not produce very well optimized bytecode for Windows.  Or maybe it's because system I/O, which still has a small influence on the results of all these tests, in Linux is faster than in Windows.</p>
+
+<p>So, currently there are 2 tracks I used for testing, all in Audio CD quality: hi-gain heavy metal song by "Heaven & Hell" and classical symphonic music written by Vivaldi.  The goal is to test completely different sound and see how each codec works with it.</p>
+
+<h4>Heavy Metal (6:53)</h4>
+
+<div class="article__table-wrap">
+    <table class="fixed" id="tbl_metal"></table>
+</div>
+
+<h4>Classic (5:17)</h4>
+<div class="article__table-wrap">
+    <table class="fixed" id="tbl_classic"></table>
+</div>
+
+<p>So, libFLAC performs better than anything else in my tests.  Respect to its developers for such a big investment in performance!</p>
+
+<p>Notice how fast mp3 decoding is compared to both Vorbis and AAC.  fmedia uses libmpg123 to decode mp3 files, it's proven to be much faster than libmad too.  I can't tell how accurate decoding is, but from the performance point of view it seems that mp3 is a really good choice as long as media player uses libmpg123.</p>
+
+<a name="howtotest"><h3>TEST BY YOURSELF</h3></a>
+
+<p>Here you can learn how to test performance of audio formats by yourself using fmedia.  I don't attach any sound files here, it's better if you use your own files, probably in other music genre.  If you wish to share your results with others, please send me a message and I'll do my best to edit the article so it reflects all difference in test results.</p>
+
+<p>First you need a good quality WAVE file (a WAVE file converted from mp3 isn't suitable for testing).  There are 3 things you should do to build a performance table like the ones above:</p>
+
+<ol>
+<li>Encode your WAVE file into all other formats and save encoding time for each file.</li>
+<li>Decode all these files and save their decoding time.</li>
+<li>Get decoding and encoding speed using this formula: <span class="code">speed = total_samples * channels / time / 1000000</span>.</li>
+</ol>
+
+<p>For example, to encode the file music.wav into FLAC, Vorbis, Opus, MP3, AAC you should execute these commands one by one:</p>
+
+<pre>fmedia music.wav -o music.flac --flac-compression=6 --print-time --notui
+fmedia music.wav -o music.ogg --vorbis.quality=7.0 --print-time --notui
+fmedia music.wav -o music.opus --opus.bitrate=192 --print-time --notui
+fmedia music.wav -o music.mp3 --mpeg-quality=2 --print-time --notui
+fmedia music.wav -o music.m4a --aac-quality=224 --print-time --notui</pre>
+
+<p>Here you instruct fmedia to convert your WAVE file into each of these audio formats with their specific encoding settings.  Of course, you can change these settings or try different audio formats.</p>
+
+<p><span class="code">--print-time</span> switch tells fmedia to show the time spent for processing the track.</p>
+
+<p><span class="code">--notui</span> is optional but I use it to suppress any other unnecessary output to stdout.</p>
+
+<p>Decoding can be done with this command:</p>
+
+<pre>fmedia music.flac -o tmp.wav --print-time --notui</pre>
+
+<p>Repeat this command for every file you want to decode.</p>
+
+<p>Of course, you can perform similar tests using other tools.  I've just shown how to do it with fmedia.</p>
+
+<p>OptimFROG was tested using the official tool - "ofr".  The commands are:</p>
+<pre>ofr --encode --time music.wav
+ofr --decode --time music.ofr</pre>
+
+
+<h3>CONCLUSION</h3>
+<p>I tried to cover all main aspects of different audio formats and codecs.  I hope the article was helpful.  If you find any mistakes or if you have any questions or suggestions, send me a message.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__text">
+                Copyright &copy;
+                <span class="footer__year">2018</span>
+                <a href="https://github.com/stsaz/" class="footer__link footer__link--copyright">Simon Zolin</a>. Designed by:
+                <a href="https://github.com/IldarKamalov"  class="footer__link footer__link--copyright">Ildar Kamalov</a>.
+            </p>
+            <nav class="footer__menu">
+                <a href="../" class="footer__link">Homepage</a>
+                <a href="https://github.com/stsaz/fmedia" target="_blank" class="footer__link">GitHub</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        function tbl_create(t, scheme, data) {
+            var row = t.insertRow(-1);
+            for (var i = 0; i != scheme.length; i++) {
+                var cell = row.insertCell(-1);
+                cell.outerHTML = "<th>" + String(scheme[i][0]) + "</th>";
+            }
+            for (var i = 0; i != data.length; i++) {
+                var row = t.insertRow(-1);
+                for (var j = 0; j != data[i].length; j++) {
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = String(data[i][j]);
+                    if (scheme[j][1] == 1) cell.className = "right";
+                }
+            }
+        }
+        var sch_tbl_overall = [
+            ["Audio Format", 0],
+            ["File Extensions", 0],
+            ["Compression Ratio (%)", 1],
+            ["Decoding Speed (samples/mcs)", 1],
+            ["Encoding Speed (samples/mcs)", 1],
+            ["Software", 0]
+        ];
+        var data = [
+            ["<b>Lossless:</b>", "", "", "", "", ""],
+            ["WAVE", ".wav", "100.00%", "∞", "∞", "-"],
+            ["FLAC", ".flac", "61.05%", 66.72, 22.86, "libFLAC"],
+            ["MP4 ALAC", ".mp4, .m4a", "63.18%", 14.26, "-", "libALAC"],
+            ["WavPack", ".wv", "60.83%", 23.21, "-", "libwavpack"],
+            ["APE", ".ape", "59.61%", 9.60, "-", "libMAC"],
+            ["OptimFROG", ".ofr", "57.86%", 5.62, 3.77, "ofr"],
+            ["<b>Lossy:</b>", "", "", "", "", ""],
+            ["OGG Vorbis", ".ogg", "N/A", 26.97, 4.95, "libvorbis"],
+            ["OGG Opus", ".opus", "N/A", 17.55, 4.55, "libopus"],
+            ["MPEG-1 Layer-3", ".mp3", "N/A", 48.89, 4.88, "libmp3lame, libmpg123"],
+            ["MP4 AAC LC", ".mp4, .m4a", "N/A", 17.41, 3.73, "libfdk-aac"],
+            ["Musepack", ".mpc", "N/A", 46.14, "-", "libmpc"]
+        ];
+        tbl_create(document.getElementById("tbl_overall"), sch_tbl_overall, data);
+
+        var sch_tbl_filefmt = [
+            ["Format",0],
+            ["Lossless",0],
+            ["Fast accurate seeking",0],
+            ["Streaming",0],
+            ["CRC",0],
+            ["No EOF reading",0],
+            ["Supported meta tags",0]
+        ];
+        var data = [
+            [".wav","y","y","y/n","n","y/n","LIST INFO"],
+            [".flac","y","y","y","y","y","Vorbis comments"],
+            [".ape","y","y","y","y","n","APE tag<br/>ID3v1"],
+            [".mp4, .m4a","y/n","y","y/n","n","y/n","ilst box"],
+            [".wv","y/n","n","y","y","n","APE tag<br/>ID3v1"],
+            [".ogg, .opus","n","n","y","y","n","Vorbis comments"],
+            [".mp3","n","y/n","y","y/n","n","ID3v2<br/>ID3v1<br/>APE tag"],
+            [".mpc","n","y","y","n","n","APE tag"]
+        ];
+        tbl_create(document.getElementById("tbl_filefmt"), sch_tbl_filefmt, data);
+
+        var sch_tbl_perf = [
+            ["Audio Format",0],
+            ["Settings",0],
+            ["File Size",1],
+            ["Decoding Time (sec)",1],
+            ["Encoding Time (sec)",1],
+            ["Decoding Speed (samples/mcs)",1],
+            ["Encoding Speed (samples/mcs)",1],
+        ];
+        var data = [
+            ["WAVE","audio CD",72939884,0,0,"-","-"],
+            ["FLAC","q6",50113007,0.56,1.63,65.12,22.37],
+            ["ALAC","",51962810,2.55,"-",14.30,"-"],
+            ["WavPack","\"normal\"",49928802,1.58,"-",23.08,"-"],
+            ["APE","\"normal\"",49076508,3.84,"-",9.50,"-"],
+            ["OptimFROG","preset=2",48970225,6.47,8.54,5.64,4.27],
+            ["Vorbis","q7.0",10333240,1.35,7.55,27.01,4.83],
+            ["Opus","br=192",9999365,2.06,8,17.70,4.56],
+            ["MPEG-1 Layer-3","V2",10052520,0.75,7.45,48.63,4.90],
+            ["AAC LC","br=224",11654622,2.08,9.39,17.53,3.88],
+            ["Musepack","\"extreme\"",9750254,0.8,"-",45.59,"-"]
+        ];
+        tbl_create(document.getElementById("tbl_metal"), sch_tbl_perf, data);
+
+        var data = [
+            ["WAVE","audio CD",56024684,0,0,"-","-"],
+            ["FLAC","q6",29916278,0.41,1.2,68.32,23.34],
+            ["ALAC","",30879625,1.97,"-",14.22,"-"],
+            ["WavPack","\"normal\"",29808098,1.2,"-",23.34,"-"],
+            ["APE","\"normal\"",29094944,2.89,"-",9.69,"-"],
+            ["OptimFROG","preset=2",27222439,5,8.56,5.60,3.27],
+            ["Vorbis","q7.0",8018413,1.04,5.53,26.93,5.07],
+            ["Opus","br=192",7672907,1.61,6.16,17.40,4.55],
+            ["MPEG-1 Layer-3","V2",7394749,0.57,5.75,49.14,4.87],
+            ["AAC LC","br=224",8952339,1.62,7.85,17.29,3.57],
+            ["Musepack","\"standard\"",7633177,0.6,"-",46.69,"-"]
+        ];
+        tbl_create(document.getElementById("tbl_classic"), sch_tbl_perf, data);
+    </script>
+</body>
+
+</html>
