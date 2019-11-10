@@ -121,7 +121,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">Windows</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.12/fmedia-1.12-win-x64.zip" class="download__link">64 bit</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.13/fmedia-1.13-win-x64.zip" class="download__link">64 bit</a>
                     </div>
                     <div class="download__platform">
                         <a href="https://github.com/stsaz/fmedia/releases/download/v1.6/fmedia-1.6-win-x86.zip" class="download__link">x86 (32-bit)</a>
@@ -134,7 +134,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">Linux</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.12/fmedia-1.12-linux-amd64.tar.xz" class="download__link">x86-64</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.13/fmedia-1.13-linux-amd64.tar.xz" class="download__link">x86-64</a>
                     </div>
                     <div class="download__platform">
                         <a href="https://github.com/stsaz/fmedia/releases/download/v0.31/fmedia-0.31-linux-i686.tar.xz" class="download__link">i686 (32-bit)</a>
@@ -170,20 +170,12 @@ You'll find more detailed information about fmedia in <a href="https://github.co
         <section>
             <h2 id="changes">CHANGES</h2>
 
-            <pre>fmedia v1.12 - Sep 16, 2019
+            <pre>fmedia v1.13 - Nov 9, 2019
 
- + GUI: "Show Media Info": add file size, file date, audio info
- - GUI: redraw items after tab switch for a large playlist
- - GUI: "Show File in Explorer" didn't work if the entry was selected by "Selection Follows Cursor"
- - GUI: crash on closing playlist (v1.2 bug)
- * ID3v1 read: skip spaces at the end of tag fields
- - --dynanorm: crash or error on stop command during playback
- - core: fix crash or mono->stereo channel conversion (v1.11 bug)
- * queue: play next track after read/decode error
- + file.stdout: add "buffer_size" config setting
- - file input: random seek error (v1.9 bug)
- - Linux: core.so: don't use glibc 2.29
- * log: print input file name for error/info messages
+ + Create a playlist file (.m3u8) from directory
+ + GUI: "Sort: Random"
+ + GUI-GTK: support multiple tabs
+ - GUI-GTK: drag'n'drop didn't work in Ubuntu
 </pre>
 
             <a href="https://raw.githubusercontent.com/stsaz/fmedia/master/CHANGES.txt">See full history</a>
@@ -489,6 +481,10 @@ fmedia ./file.wav --out=./file.mp3 --mpeg-quality=0 --rate=48000</code></pre>
             <p>Show PCM information</p>
 
             <pre><code>fmedia input.ogg --pcm-peaks</code></pre>
+
+            <p>Create a playlist file from directory:</p>
+
+            <pre><code>fmedia ./Music -o music.m3u8</code></pre>
         </section>
 
         <section>
