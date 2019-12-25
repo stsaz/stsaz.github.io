@@ -160,6 +160,16 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                         <a href="https://github.com/stsaz/fmedia/releases/download/v1.0/fmedia-1.0-macos-amd64.zip" class="download__link">amd64</a>
                     </div>
                 </div>
+
+                <div class="download__os">
+                    <svg class="download__icon">
+                        <use xlink:href="#android" />
+                    </svg>
+                    <div class="download__title">Android</div>
+                    <div class="download__platform">
+                        <a href="https://github.com/stsaz/fmedia/raw/android/android/app/release/app-release.apk" class="download__link">arm</a>
+                    </div>
+                </div>
             </div>
 
             <p><b>Self-contained</b>. fmedia uses modified versions of 3rd party libraries: libALAC, libfdk-aac, libFLAC, libMAC, libmp3lame, libmpg123, libmpc, libogg, libopus, libsoxr, libvorbisenc, libvorbis, libwavpack, libDynamicAudioNormalizer.  Everything is inside the package, so no additional dependencies are required to be installed on your system.</p>
@@ -176,6 +186,14 @@ You'll find more detailed information about fmedia in <a href="https://github.co
  + GUI: "Sort: Random"
  + GUI-GTK: support multiple tabs
  - GUI-GTK: drag'n'drop didn't work in Ubuntu
+</pre>
+
+<pre>fmedia for Android v0.1 - Dec 25, 2019
+
+ The first release for Android.  Install from .apk.
+ + Plays local files or directories
+ + Very simple UI
+ + Control buttons on notification bar
 </pre>
 
             <a href="https://raw.githubusercontent.com/stsaz/fmedia/master/CHANGES.txt">See full history</a>
@@ -239,6 +257,14 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     <pre><code>ln -s /usr/local/fmedia-1/fmedia /usr/local/bin/fmedia</code></pre>
                 </li>
             </ol>
+
+            <h3 id="install-android">INSTALL ON ANDROID</h3>
+            <ol>
+                <li>Enable "Allow installation from unknown sources" option in your phone's settings (you can disable it again after installation)</li>
+                <li>Download .apk file to your phone's storage and execute it</li>
+                <li>Click <b>Install</b> button and wait a couple seconds</li>
+            </ol>
+
         </section>
 
         <section>
@@ -528,6 +554,19 @@ fmedia ./file.wav --out=./file.mp3 --mpeg-quality=0 --rate=48000</code></pre>
 
         <symbol id="github" viewBox="0 0 30 30">
             <path d="M15 3C8.373 3 3 8.373 3 15c0 5.623 3.872 10.328 9.092 11.63a1.751 1.751 0 0 1-.092-.583v-2.051h-1.508c-.821 0-1.551-.353-1.905-1.009-.393-.729-.461-1.844-1.435-2.526-.289-.227-.069-.486.264-.451.615.174 1.125.596 1.605 1.222.478.627.703.769 1.596.769.433 0 1.081-.025 1.691-.121.328-.833.895-1.6 1.588-1.962-3.996-.411-5.903-2.399-5.903-5.098 0-1.162.495-2.286 1.336-3.233-.276-.94-.623-2.857.106-3.587 1.798 0 2.885 1.166 3.146 1.481A8.993 8.993 0 0 1 15.495 9c1.036 0 2.024.174 2.922.483C18.675 9.17 19.763 8 21.565 8c.732.731.381 2.656.102 3.594.836.945 1.328 2.066 1.328 3.226 0 2.697-1.904 4.684-5.894 5.097C18.199 20.49 19 22.1 19 23.313v2.734c0 .104-.023.179-.035.268C23.641 24.676 27 20.236 27 15c0-6.627-5.373-12-12-12z"/>
+        </symbol>
+
+        <symbol id="android" viewBox="0 0 611.363 611.363">
+		    <path d="M152.682,458.363c0,15.3,10.2,25.5,25.5,25.5h25.5v89.25c0,20.4,17.85,38.25,38.25,38.25s38.25-17.85,38.25-38.25v-89.25
+			h51v89.25c0,20.4,17.85,38.25,38.25,38.25s38.25-17.85,38.25-38.25v-89.25h25.5c15.3,0,25.5-10.2,25.5-25.5v-255h-306V458.363z
+			 M88.932,203.363c-20.4,0-38.25,17.851-38.25,38.25v178.5c0,20.4,17.85,38.25,38.25,38.25s38.25-17.85,38.25-38.25v-178.5
+			C127.182,221.213,109.332,203.363,88.932,203.363z M522.432,203.363c-20.4,0-38.25,17.851-38.25,38.25v178.5
+			c0,20.4,17.85,38.25,38.25,38.25s38.25-17.85,38.25-38.25v-178.5C560.682,221.213,542.832,203.363,522.432,203.363z
+			 M394.932,55.463l33.15-33.15c5.1-5.1,5.1-12.75,0-17.85c-5.101-5.101-12.75-5.101-17.851,0l-38.25,38.25
+			c-17.85-12.75-40.8-17.851-66.3-17.851s-48.45,5.101-68.85,15.3l-35.7-38.25c-5.1-2.55-15.3-2.55-20.4,0
+			c-2.55,5.101-2.55,15.301,0,20.4l33.15,33.15c-35.7,28.05-61.2,71.399-61.2,122.399h306
+			C458.682,126.863,433.182,80.963,394.932,55.463z M254.682,126.863h-25.5v-25.5h25.5V126.863z M382.182,126.863h-25.5v-25.5h25.5
+			V126.863z"/>
         </symbol>
     </svg>
 
