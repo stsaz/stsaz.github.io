@@ -91,7 +91,7 @@ Its low CPU &amp; memory consumption saves energy when running on a notebook's b
 
 Play or convert audio files, record new audio tracks from microphone, save songs from Internet radio, and much more! fmedia is free and open-source project, and you can use it as a standalone application or as a library for your own software.
 
-fmedia can decode: .mp3, .ogg (Vorbis, Opus), .opus, .m4a/.mp4 (AAC, ALAC, MPEG), .mka/.mkv (AAC, ALAC, MPEG, Vorbis), .avi (AAC, MPEG), .aac, .mpc, .flac, .ape, .wv, .wav.
+fmedia can decode: .mp3, .ogg (Vorbis, Opus), .opus, .m4a/.mp4 (AAC, ALAC, MPEG), .mka/.mkv (AAC, ALAC, MPEG, Vorbis), .caf (AAC, ALAC), .avi (AAC, MPEG), .aac, .mpc, .flac, .ape, .wv, .wav.
 
 fmedia can encode into: .mp3, .ogg, .opus, .m4a (AAC), .flac, .wav.
 
@@ -121,7 +121,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">Windows</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.13/fmedia-1.13-win-x64.zip" class="download__link">64 bit</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.14/fmedia-1.14-win-x64.zip" class="download__link">64 bit</a>
                     </div>
                     <div class="download__platform">
                         <a href="https://github.com/stsaz/fmedia/releases/download/v1.6/fmedia-1.6-win-x86.zip" class="download__link">x86 (32-bit)</a>
@@ -134,7 +134,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">Linux</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.13/fmedia-1.13-linux-amd64.tar.xz" class="download__link">x86-64</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.14/fmedia-1.14-linux-amd64.tar.xz" class="download__link">x86-64</a>
                     </div>
                     <div class="download__platform">
                         <a href="https://github.com/stsaz/fmedia/releases/download/v0.31/fmedia-0.31-linux-i686.tar.xz" class="download__link">i686 (32-bit)</a>
@@ -180,20 +180,21 @@ You'll find more detailed information about fmedia in <a href="https://github.co
         <section>
             <h2 id="changes">CHANGES</h2>
 
-            <pre>fmedia v1.13 - Nov 9, 2019
+<pre>fmedia v1.14 - Jan 7, 2020
 
- + Create a playlist file (.m3u8) from directory
- + GUI: "Sort: Random"
- + GUI-GTK: support multiple tabs
- - GUI-GTK: drag'n'drop didn't work in Ubuntu
+ + .caf reader (AAC, ALAC) (no seeking)
+ + @stdin: support seeking forward, which is required by several file formats
+ - GUI: Windows: "Sort: Random" didn't work
 </pre>
 
-<pre>fmedia for Android v0.1 - Dec 25, 2019
+<pre>fmedia (Android) v0.2 - Jan 7, 2020
 
- The first release for Android.  Install from .apk.
- + Plays local files or directories
- + Very simple UI
- + Control buttons on notification bar
+ + GUI: save/restore the current path in explorer
+ + GUI: "Add URL" dialog
+ + GUI: Filter tracks in playlist
+ + GUI: Settings dialog
+ + GUI: main menu with commands like "Delete File", "Clear List" and others
+ * GUI: reorder UI controls
 </pre>
 
             <a href="https://raw.githubusercontent.com/stsaz/fmedia/master/CHANGES.txt">See full history</a>
@@ -297,6 +298,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     <li>.avi</li>
                     </ul><p>Audio:</p><ul>
                     <li>.ogg/.opus</li>
+                    <li>.caf</li>
                     <li>.mp3</li>
                     <li>.aac</li>
                     <li>.mpc</li>
