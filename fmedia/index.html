@@ -121,10 +121,10 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">Windows</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.14/fmedia-1.14-win-x64.zip" class="download__link">64 bit</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.15/fmedia-1.15-win-x64.zip" class="download__link">64 bit</a>
                     </div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.6/fmedia-1.6-win-x86.zip" class="download__link">x86 (32-bit)</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.15/fmedia-1.15-win-x86.zip" class="download__link">x86 (32-bit)</a>
                     </div>
                 </div>
 
@@ -134,7 +134,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">Linux</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.14/fmedia-1.14-linux-amd64.tar.xz" class="download__link">x86-64</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.15/fmedia-1.15-linux-amd64.tar.xz" class="download__link">x86-64</a>
                     </div>
                     <div class="download__platform">
                         <a href="https://github.com/stsaz/fmedia/releases/download/v0.31/fmedia-0.31-linux-i686.tar.xz" class="download__link">i686 (32-bit)</a>
@@ -180,11 +180,27 @@ You'll find more detailed information about fmedia in <a href="https://github.co
         <section>
             <h2 id="changes">CHANGES</h2>
 
-<pre>fmedia v1.14 - Jan 7, 2020
+<pre>fmedia v1.15 - Feb 4, 2020
 
- + .caf reader (AAC, ALAC) (no seeking)
- + @stdin: support seeking forward, which is required by several file formats
- - GUI: Windows: "Sort: Random" didn't work
+ + Linux: support JACK capture
+ + Linux: disable system sleep timer while playing
+ * Linux: automatically use ALSA output when Pulse isn't installed
+   e.g. "libpulse.so.0" is not found
+
+ * --listdev is more reliable
+   Show capture devices list even if playback devices list couldn't be shown
+
+ - .m4a write: .m4a(AAC) files created by fmedia couldn't be opened
+     by other players, e.g. VLC (v1.10 bug)
+   fmedia can read those files with no problems.
+
+ *! config: don't override "output" if it's already initialized
+    e.g. for this configuration:
+
+    output "pulse.out"
+    output "alsa.out"
+
+    Pulse (the first one) will be used.
 </pre>
 
 <pre>fmedia (Android) v0.2 - Jan 7, 2020
@@ -286,6 +302,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     <li>Windows Direct Sound</li>
                     <li>ALSA</li>
                     <li>CoreAudio</li>
+                    <li>JACK</li>
                     </ul>
                 </div>
 
