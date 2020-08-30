@@ -121,7 +121,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">Windows</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.18/fmedia-1.18-win-x64.zip" class="download__link">64 bit</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.19/fmedia-1.19-win-x64.zip" class="download__link">64 bit</a>
                     </div>
                     <div class="download__platform">
                         <a href="https://github.com/stsaz/fmedia/releases/download/v1.15/fmedia-1.15-win-x86.zip" class="download__link">x86 (32-bit)</a>
@@ -134,7 +134,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">Linux</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.18/fmedia-1.18-linux-amd64.tar.xz" class="download__link">x86-64</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.19/fmedia-1.19-linux-amd64.tar.xz" class="download__link">x86-64</a>
                     </div>
                     <div class="download__platform">
                         <a href="https://github.com/stsaz/fmedia/releases/download/v0.31/fmedia-0.31-linux-i686.tar.xz" class="download__link">i686 (32-bit)</a>
@@ -147,7 +147,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">FreeBSD</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v0.30.2/fmedia-0.30.2-bsd-amd64.tar.xz" class="download__link">amd64</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.19/fmedia-1.19-bsd-amd64.tar.xz" class="download__link">amd64</a>
                     </div>
                 </div>
 
@@ -157,7 +157,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">macOS</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.0/fmedia-1.0-macos-amd64.zip" class="download__link">amd64</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.19/fmedia-1.19-macos-amd64.zip" class="download__link">amd64</a>
                     </div>
                 </div>
 
@@ -180,17 +180,13 @@ You'll find more detailed information about fmedia in <a href="https://github.co
         <section>
             <h2 id="changes">CHANGES</h2>
 
-<pre>fmedia v1.18 - Jul 5, 2020
+<pre>fmedia v1.19 - Aug 30, 2020
 
- + Pulse: support 8-bit playback
- + help.txt: Spanish translation
- * core: skip unknown modules in fmedia-user.conf
- * file.in, file.out: can use thread pool for asynchronous I/O
- - --split: .mp3 output: corrupted first frame
- - .raw: reading didn't work
- - ID3v2 read: fix parsing frame data with 'unsync' flag
- - .flac read: couldn't skip corrupted meta block
- * use BSD 2-Clause License
+ + Pulse: support recording
+ + OSS: support recording
+ * --capture-buffer argument: all audio modules now support it
+ - "-o .ogg" command line didn't work (v1.13 bug)
+ - .m4a write: couldn't create file from source file with an invalid frame
 </pre>
 
 <pre>fmedia (Android) v0.3 - Mar 15, 2020
