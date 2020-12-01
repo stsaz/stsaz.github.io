@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="description" content="fast media player/recorder/converter">
+<title>fencedns - fast ad-blocking DNS server</title>
+<style>
+body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Arial, sans-serif;
+font-size: 16px;
+line-height: 1.6;
+color: #191919;
+}
+
+div {
+white-space: pre-wrap;
+}
+
+a {
+color: #256eb1;
+text-decoration: none;
+}
+
+a:hover {
+color: #49bfff;
+text-decoration: underline;
+}
+
+pre {
+font-size: 13px;
+font-family: Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+color: #1e1e1e;
+background: #f0f0f0;
+padding: 15px;
+overflow: auto;
+border-radius: 7px;
+}
+</style>
+</head>
+<body>
+<h1>fencedns</h1>
+
+<div>fencedns is a fast and small DNS server with ad-blocking capabilities.
+It can be used as default DNS resolver on your system, blocking all attempts from any application to obtain IP addresses of advertisment domains.
+The internal cache saves network traffic, the logs provide you with the information of what hosts were resolved and how much time it took, and an easy-to-use configuration file places <b>you</b> in control of your DNS traffic.</div>
+
+<p>fencedns has a small memory and CPU usage - it saves the energy and the environment.</p>
+
+<p><img src="fencedns.png"/></p>
+
+<a href="https://github.com/stsaz/fencedns/blob/beta/README.md">More info here</a>
+
+<h2 id="download">Download</h2>
+Linux:
+	<a href="https://github.com/stsaz/fencedns/releases/download/v0.1/fencedns-0.1-linux-amd64.tar.xz">x86-64</a>
+
+<p><b>Portable</b>. No installation, just uncompress the package anywhere you want!</p>
+<p><b>Open-source</b>. The source code is here: <a href="https://github.com/stsaz/fencedns">https://github.com/stsaz/fencedns</a></p>
+
+<h2 id="changes">Changes</h2>
+
+<pre>fencedns v0.1 - Dec 1, 2020
+
+ + DNS server
+ + upstream server list
+ + block domains
+ + rewrite domains to IP
+ + auto-refresh hosts from local files, if they are modified
+ + block AAAA requests
+ + cache
+ + logs
+</pre>
+
+<a href="https://raw.githubusercontent.com/stsaz/fencedns/beta/CHANGES.txt">See full history</a>
+
+<h2 id="features">Features</h2>
+
+<ul>
+<li>portable package without additional dependencies</li>
+<li>choose DNS upstream servers (currently, UDP only)</li>
+<li>block unwanted DNS names</li>
+<li>configure how to block them: with 127.0.0.1, 0.0.0.0 or NXDOMAIN, etc.</li>
+<li>rewrite DNS host to an IP address</li>
+<li>auto-refresh hosts from local files, if they are modified</li>
+<li>internal cache</li>
+<li>logs</li>
+</ul>
+
+Currently it runs only on Linux, but I plan to build it for Windows too.
+
+
+<h2 id="feedback">Feedback</h2>
+
+Please report bugs to <strong>stsaz at yandex.ru</strong> or create <a href="https://github.com/stsaz/fencedns/issues/new" target="_blank">an issue on GitHub</a>. Your suggestions are also greatly appreciated.
+
+<hr/>
+
+Created by <a href="https://github.com/stsaz/">Simon Zolin</a>
+
+</body>
+</html>
