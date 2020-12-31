@@ -50,30 +50,30 @@ The internal cache saves network traffic, the logs provide you with the informat
 
 <p><img src="fencedns.png"/></p>
 
-<a href="https://github.com/stsaz/fencedns/blob/beta/README.md">More info here</a>
+<a href="https://github.com/stsaz/fencedns/blob/master/README.md">More info here</a>
 
 <h2 id="download">Download</h2>
 Linux:
-	<a href="https://github.com/stsaz/fencedns/releases/download/v0.1/fencedns-0.1-linux-amd64.tar.xz">x86-64</a>
+	<a href="https://github.com/stsaz/fencedns/releases/download/v0.2/fencedns-0.2-linux-amd64.tar.xz">x86-64</a>
 
 <p><b>Portable</b>. No installation, just uncompress the package anywhere you want!</p>
 <p><b>Open-source</b>. The source code is here: <a href="https://github.com/stsaz/fencedns">https://github.com/stsaz/fencedns</a></p>
 
 <h2 id="changes">Changes</h2>
 
-<pre>fencedns v0.1 - Dec 1, 2020
+<pre>fencedns v0.2 - Dec 31, 2020
 
- + DNS server
- + upstream server list
- + block domains
- + rewrite domains to IP
- + auto-refresh hosts from local files, if they are modified
- + block AAAA requests
- + cache
- + logs
+ + "timer_resolution_msec"
+ + upstream: "send_attempts"
+ - upstream: recreate socket after network has changed
+ + cache: "nxdomain_ttl"
+ * cache: fix TTL for msg with no answers
+ + hosts: "rewrite_ttl"
+ * hosts: support 'IP HOST' 'HOST' rules for the same host
+ + log: "output"
 </pre>
 
-<a href="https://raw.githubusercontent.com/stsaz/fencedns/beta/CHANGES.txt">See full history</a>
+<a href="https://raw.githubusercontent.com/stsaz/fencedns/master/CHANGES.txt">See full history</a>
 
 <h2 id="features">Features</h2>
 
