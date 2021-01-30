@@ -91,13 +91,11 @@ Its low CPU &amp; memory consumption saves energy when running on a notebook's b
 
 Play or convert audio files, record new audio tracks from microphone, save songs from Internet radio, and much more! fmedia is free and open-source project, and you can use it as a standalone application or as a library for your own software.
 
-fmedia can decode: .mp3, .ogg (Vorbis, Opus), .opus, .m4a/.mp4 (AAC, ALAC, MPEG), .mka/.mkv (AAC, ALAC, MPEG, Vorbis), .caf (AAC, ALAC), .avi (AAC, MPEG), .aac, .mpc, .flac, .ape, .wv, .wav.
+fmedia can decode: .mp3, .ogg (Vorbis, Opus), .opus, .mp4/.m4a/.mov (AAC, ALAC, MPEG), .mka/.mkv (AAC, ALAC, MPEG, Vorbis), .caf (AAC, ALAC), .avi (AAC, MPEG), .aac, .mpc, .flac, .ape, .wv, .wav.
 
 fmedia can encode into: .mp3, .ogg, .opus, .m4a (AAC), .flac, .wav.
 
 You'll find more detailed information about fmedia in <a href="https://github.com/stsaz/fmedia/blob/master/README.md" target="_blank">README</a> file inside the package.
-
-<b>Help wanted!</b>  If you want to help fmedia - you can do it by translating help.txt file, even starting with a few lines.  More info on <a href="https://github.com/stsaz/fmedia/issues/15">github</a>.</p>
         </section>
 
         <section>
@@ -121,7 +119,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">Windows</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.21/fmedia-1.21-win-x64.zip" class="download__link">64 bit</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.22/fmedia-1.22-win-x64.zip" class="download__link">64 bit</a>
                     </div>
                     <div class="download__platform">
                         <a href="https://github.com/stsaz/fmedia/releases/download/v1.15/fmedia-1.15-win-x86.zip" class="download__link">x86 (32-bit)</a>
@@ -134,7 +132,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">Linux</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.21/fmedia-1.21-linux-amd64.tar.xz" class="download__link">x86-64</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.22/fmedia-1.22-linux-amd64.tar.xz" class="download__link">x86-64</a>
                     </div>
                     <div class="download__platform">
                         <a href="https://github.com/stsaz/fmedia/releases/download/v0.31/fmedia-0.31-linux-i686.tar.xz" class="download__link">i686 (32-bit)</a>
@@ -182,10 +180,12 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 
 Follow updates on <a href="https://twitter.com/simonzolin">Twitter</a>.
 
-<pre>fmedia v1.21 - Dec 31, 2020
+<pre>fmedia v1.22 - Jan 30, 2021
 
- + GUI (Linux): File->"Download from YouTube" (via /usr/bin/youtube-dl)
- - core: --gain didn't work (v1.20 bug)
+ + GUI (Linux): "Convert" dialog with editable conversion properties and hotkeys for marking Start/Stop position
+ + GUI (Linux): window for log messages
+ + .mp4 read: support .mov
+ + detect input file format from file data
 </pre>
 
 <pre>fmedia (Android) v0.3 - Mar 15, 2020
