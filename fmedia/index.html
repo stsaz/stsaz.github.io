@@ -119,7 +119,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">Windows</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.23/fmedia-1.23-win-x64.zip" class="download__link">64 bit</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.23.1/fmedia-1.23.1-win-x64.zip" class="download__link">64 bit</a>
                     </div>
                     <div class="download__platform">
                         <a href="https://github.com/stsaz/fmedia/releases/download/v1.15/fmedia-1.15-win-x86.zip" class="download__link">x86 (32-bit)</a>
@@ -132,7 +132,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
                     </svg>
                     <div class="download__title">Linux</div>
                     <div class="download__platform">
-                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.23/fmedia-1.23-linux-amd64.tar.xz" class="download__link">x86-64</a>
+                        <a href="https://github.com/stsaz/fmedia/releases/download/v1.23.1/fmedia-1.23.1-linux-amd64.tar.xz" class="download__link">x86-64</a>
                     </div>
                     <div class="download__platform">
                         <a href="https://github.com/stsaz/fmedia/releases/download/v0.31/fmedia-0.31-linux-i686.tar.xz" class="download__link">i686 (32-bit)</a>
@@ -178,21 +178,10 @@ You'll find more detailed information about fmedia in <a href="https://github.co
         <section>
             <h2 id="changes">CHANGES</h2>
 
-Follow updates on <a href="https://twitter.com/simonzolin">Twitter</a>.
+<pre>fmedia v1.23.1 - Mar 4, 2021
 
-<pre>fmedia v1.23 - Feb 26, 2021
-
- + Windows: record from capture and loopback device in parallel into separate files:
-   "--record --dev-capture=N --dev-loopback=N -o rec$counter.wav"
- + GUI (Linux): Help->QuickCommand: dialog with all menu commands in one list
- + GUI (Linux): File->RenameFile: rename/move a file on disk
- + .caf read: support pcm-le data
- * .mkv read: couldn't read some files
- - .mp4 read/write: fix (v1.22 bug)
- - GUI (Linux): Convert: didn't copy meta data from source
- - core: --mix didn't work
- - core: didn't work on old Windows (v1.19 bug)
- - core: didn't truncate output files when '--overwrite' is used (v1.16 bug)
+ - .ogg read: fix (v1.23 bug)
+ - GUI (Linux): youtube downloader: save/restore settings for format and output directory
 </pre>
 
 <pre>fmedia (Android) v0.3 - Mar 15, 2020
