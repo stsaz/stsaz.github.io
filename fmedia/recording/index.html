@@ -318,7 +318,7 @@ record_format {
 
 <p>What if you don't want to store every track on disk, but rather store only the tracks you like?  fmedia allows you to do that:</p>
 
-<pre><code>fmedia http://radio-stream:80/ -o './$time. $artist - $title.mp3' --stream-copy --out-copy=cmd
+<pre><code>fmedia http://radio-stream:80/ -o './$time. $artist - $title.mp3' --stream-copy --out-copy-cmd
 </code></pre>
 
 <p>While you're listening to a song, you may hit 'T' (i.e. <code>Shift+t</code>), and the currently playing song will be stored on your disk.  When a new track starts, this command is reset.  All other tracks won't be saved unless you press 'T' key for each one.</p>
