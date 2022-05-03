@@ -54,23 +54,18 @@ The internal cache saves network traffic, the logs provide you with the informat
 
 <h2 id="download">Download</h2>
 Linux:
-	<a href="https://github.com/stsaz/fencedns/releases/download/v0.2/fencedns-0.2-linux-amd64.tar.xz">x86-64</a>
+	<a href="https://github.com/stsaz/fencedns/releases/download/v0.4/fencedns-0.4-linux-amd64.tar.zst">x86-64</a>
+Windows:
+	<a href="https://github.com/stsaz/fencedns/releases/download/v0.4/fencedns-0.4-windows-x64.zip">x64</a>
 
 <p><b>Portable</b>. No installation, just uncompress the package anywhere you want!</p>
 <p><b>Open-source</b>. The source code is here: <a href="https://github.com/stsaz/fencedns">https://github.com/stsaz/fencedns</a></p>
 
 <h2 id="changes">Changes</h2>
 
-<pre>fencedns v0.2 - Dec 31, 2020
+<pre>fencedns v0.4 - May 3, 2022
 
- + "timer_resolution_msec"
- + upstream: "send_attempts"
- - upstream: recreate socket after network has changed
- + cache: "nxdomain_ttl"
- * cache: fix TTL for msg with no answers
- + hosts: "rewrite_ttl"
- * hosts: support 'IP HOST' 'HOST' rules for the same host
- + log: "output"
+ + support Windows
 </pre>
 
 <a href="https://raw.githubusercontent.com/stsaz/fencedns/master/CHANGES.txt">See full history</a>
@@ -84,11 +79,9 @@ Linux:
 <li>configure how to block them: with 127.0.0.1, 0.0.0.0 or NXDOMAIN, etc.</li>
 <li>rewrite DNS host to an IP address</li>
 <li>auto-refresh hosts from local files, if they are modified</li>
-<li>internal cache</li>
-<li>logs</li>
+<li>in-memory and file cache</li>
+<li>configurable logs</li>
 </ul>
-
-Currently it runs only on Linux, but I plan to build it for Windows too.
 
 
 <h2 id="feedback">Feedback</h2>
