@@ -119,7 +119,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Windows</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/v1.27.4/fmedia-1.27.4-win-x64.zip" class="download__link">64 bit</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-win-x64.zip" class="download__link">64 bit</a>
 					</div>
 					<div class="download__platform">
 						<a href="https://github.com/stsaz/fmedia/releases/download/v1.15/fmedia-1.15-win-x86.zip" class="download__link">x86 (32-bit)</a>
@@ -132,7 +132,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Linux</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/v1.27.4/fmedia-1.27.4-linux-amd64.tar.xz" class="download__link">x86-64</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-linux-amd64.tar.xz" class="download__link">x86-64</a>
 					</div>
 					<div class="download__platform">
 						<a href="https://github.com/stsaz/fmedia/releases/download/v0.31/fmedia-0.31-linux-i686.tar.xz" class="download__link">i686 (32-bit)</a>
@@ -178,15 +178,20 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 		<section>
 			<h2 id="changes">CHANGES</h2>
 
-<pre>fmedia v1.27.4 - Jun 5, 2022
+<pre>fmedia v1.28 - Jun 20, 2022
 
- * support "--include/--exclude" when creating playlist from directory
- - .avi(AAC, PCM), .mkv(MP3) read didn't work
- - .ogg read: some packets could be skipped
- - .ogg(Opus, Vorbis) write: correct output data and granule position for the first packets
- * .ogg(FLAC): support seeking
- * .caf(PCM) read: faster processing
- - FLAC decode: fix crash after seek on bad .flac files
+ + TUI: new commands:
+    E: Remove "dead" items from playlist
+    L: Save current playlist to the system's temporary directory
+    r: "Choose random track" setting: on/off
+    x: Remove the track from playlist and play next track
+ * UI: react faster to seek requests
+ * GUI: use separate language files
+ + GUI: Italian language
+ - GUI: "List->Read Meta Tags" didn't work
+ * Windows: minimum required version is now Vista
+ * .mp3 --stream-copy: improve seeking accuracy
+ * .cue: support for all containers (except .avi and .caf)
 </pre>
 
 <pre>fmedia (Android) v0.3 - Mar 15, 2020
@@ -519,7 +524,7 @@ fmedia ./file.wav --out=./file.mp3 --mpeg-quality=0 --rate=48000</code></pre>
 		<section>
 			<h2 id="feedback">FEEDBACK</h2>
 
-			Please report bugs to <strong>stsaz [at] yandex.ru</strong> or create <a href="https://github.com/stsaz/fmedia/issues/new" target="_blank">an issue on GitHub</a>. Your suggestions and source code patches are also greatly appreciated.
+			Please report bugs to stsaz at pm dot me or create <a href="https://github.com/stsaz/fmedia/issues/new" target="_blank">an issue on GitHub</a>. Your suggestions and source code patches are also greatly appreciated.
 		</section>
 
 		<section>
