@@ -122,7 +122,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Windows</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-win-x64.zip" class="download__link">64-bit</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/v1.29/fmedia-1.29-win-x64.zip" class="download__link">64-bit</a>
 					</div>
 					<div class="download__platform">
 						<a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-win-x64old.zip" class="download__link">64-bit pre-2011</a>
@@ -138,7 +138,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Linux</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-linux-amd64.tar.xz" class="download__link">x86-64</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/v1.29/fmedia-1.29-linux-amd64.tar.xz" class="download__link">x86-64</a>
 					</div>
 					<div class="download__platform">
 						<a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-linux-amd64old.tar.xz" class="download__link">x86-64 pre-2011</a>
@@ -187,23 +187,23 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 		<section>
 			<h2 id="changes">CHANGES</h2>
 
-<pre>fmedia v1.28 - Jun 20, 2022
+<pre>fmedia v1.29 - Sep 5, 2022
 
- + TUI: new commands:
-    E: Remove "dead" items from playlist
-    L: Save current playlist to the system's temporary directory
-    r: "Choose random track" setting: on/off
-    x: Remove the track from playlist and play next track
- * UI: react faster to seek requests
- * GUI: use separate language files
- + GUI: Italian language
- - GUI: "List->Read Meta Tags" didn't work
- * Windows: minimum required version is now Vista
- * .mp3 --stream-copy: improve seeking accuracy
- * .cue: support for all containers (except .avi and .caf)
-
-Jul 1, 2022 Update:
-Rebuilt <a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-linux-amd64.tar.xz" class="download__link">fmedia Linux x86-64</a> package - now it runs on older Linux without glibc-2.3x.
+ + new "fmedia.conf" settings:
+   + "remove_if_unknown_format":
+     Auto-remove playlist item if the file format is not supported
+   + "remove_if_no_source":
+     Auto-remove playlist item if source doesn't exist
+ * --random: logically split playlist into 2 chunks for better UXP
+   (now the next song is likely further from the current one in playlist)
+ - HTTP: couldn't play some radio streams
+   (previously we relied at least on "Connection:close")
+ - "--mix" didn't work
+ - .flac read: couldn't complete seek request in some cases
+ - .ogg --stream-copy: fix incorrect positioning
+ - .ogg/.opus write: corrupted data (v1.28 bug)
+   (some packets were being skipped)
+ - GUI: fix Next/Prev on inactive playlist
 </pre>
 
 <pre>fmedia (Android) v0.3 - Mar 15, 2020
