@@ -122,7 +122,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Windows</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/v1.29/fmedia-1.29-win-x64.zip" class="download__link">64-bit</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/v1.29.1/fmedia-1.29.1-win-x64.zip" class="download__link">64-bit</a>
 					</div>
 					<div class="download__platform">
 						<a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-win-x64old.zip" class="download__link">64-bit pre-2011</a>
@@ -138,7 +138,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Linux</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/v1.29/fmedia-1.29-linux-amd64.tar.xz" class="download__link">x86-64</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/v1.29.1/fmedia-1.29.1-linux-amd64.tar.xz" class="download__link">x86-64</a>
 					</div>
 					<div class="download__platform">
 						<a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-linux-amd64old.tar.xz" class="download__link">x86-64 pre-2011</a>
@@ -187,23 +187,17 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 		<section>
 			<h2 id="changes">CHANGES</h2>
 
-<pre>fmedia v1.29 - Sep 5, 2022
+<pre>fmedia v1.29.1 - Sep 26, 2022
 
- + new "fmedia.conf" settings:
-   + "remove_if_unknown_format":
-     Auto-remove playlist item if the file format is not supported
-   + "remove_if_no_source":
-     Auto-remove playlist item if source doesn't exist
- * --random: logically split playlist into 2 chunks for better UXP
-   (now the next song is likely further from the current one in playlist)
- - HTTP: couldn't play some radio streams
-   (previously we relied at least on "Connection:close")
- - "--mix" didn't work
- - .flac read: couldn't complete seek request in some cases
- - .ogg --stream-copy: fix incorrect positioning
- - .ogg/.opus write: corrupted data (v1.28 bug)
-   (some packets were being skipped)
- - GUI: fix Next/Prev on inactive playlist
+ * GUI: "Analyze & Show PCM Info" supports .cue tracks
+ + GUI/Windows: Record dialog: "Enable Dynamic Audio Normalizer" setting
+ - GUI/Windows: Record dialog: audio format settings didn't work
+ * GUI/Windows: save/restore the settings for Record & Convert dialogs
+ - GUI/Windows: couldn't set an empty setting value in Record & Convert dialogs
+ - GUI/Windows: Convert: seeking on .mp3 didn't work (v1.28 bug)
+ - core: user config settings from fmedia-user.conf didn't work (v1.25.3beta bug)
+ * "--until" now works with radio stream sources
+ - .aac read: fix crash
 </pre>
 
 <pre>fmedia (Android) v0.3 - Mar 15, 2020
