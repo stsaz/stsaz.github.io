@@ -53,14 +53,23 @@
 						<div class="screenshots__tabs">
 							<input id="tab-gui" type="radio" name="tabs" class="screenshots__control-input" checked>
 							<label for="tab-gui" class="screenshots__control">GUI</label>
+
 							<input id="tab-cli" type="radio" name="tabs" class="screenshots__control-input">
 							<label for="tab-cli" class="screenshots__control screenshots__control--cli">CLI</label>
+
+							<input id="tab-android" type="radio" name="tabs" class="screenshots__control-input">
+							<label for="tab-android" class="screenshots__control screenshots__control">Android</label>
 
 							<div class="screenshots__tab" id="gui">
 								<img class="screenshots__image" src="./img/v11-gui.png" title="fmedia in GUI mode">
 							</div>
+
 							<div class="screenshots__tab" id="cli">
 								<video class="screenshots__video" autoplay="autoplay" loop="loop" src="./img/cli.mp4" poster="./img/cli.jpg" muted="muted"></video>
+							</div>
+
+							<div class="screenshots__tab" id="scrandroid">
+								<img src="./img/fmedia-android-v04.png" title="fmedia/Android" style="border: 1px solid silver;"></video>
 							</div>
 						</div>
 					</div>
@@ -172,16 +181,20 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					<svg class="download__icon">
 						<use xlink:href="#android" />
 					</svg>
-					<div class="download__title">Android</div>
+					<div class="download__title">Android*</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/raw/android/android/app/release/app-release.apk" class="download__link">arm</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/android-v0.4/fmedia-0.4-android.apk" class="download__link">arm</a>
 					</div>
 				</div>
 			</div>
 
 			<p><b>Self-contained</b>. fmedia uses modified versions of 3rd party libraries: libALAC, libfdk-aac, libFLAC, libMAC, libmp3lame, libmpg123, libmpc, libogg, libopus, libsoxr, libvorbisenc, libvorbis, libwavpack, libDynamicAudioNormalizer.  Everything is inside the package, so no additional dependencies are required to be installed on your system.</p>
+
 			<p><b>Portable</b>. No installation, just uncompress the package anywhere you want!</p>
+
 			<p><b>Open-source</b>. You can download the sourcecode from here: <a href="https://github.com/stsaz/fmedia">https://github.com/stsaz/fmedia</a></p>
+
+			<p><b>*</b> fmedia/Android is experimental and still needs much more work.  It doesn't share any source-code with the mainstream version.  Instead, it uses the default audio decoding/playback capabilities Android OS provides (just like any other ordinary audio player).  Use it if you want the audio player for Android with minimum features and minimum system resources consumption.</p>
 		</section>
 
 		<section>
@@ -200,12 +213,18 @@ You'll find more detailed information about fmedia in <a href="https://github.co
  - .aac read: fix crash
 </pre>
 
-<pre>fmedia (Android) v0.3 - Mar 15, 2020
+<pre>fmedia/Android v0.4 - Oct 16, 2022
 
- + Record audio button
- + setting: Show 'Record' Button
- + setting: Directory for Recordings
- + save/restore playlist scroll position
+ * Normalize all graphical elements
+ + File Explorer supports all SD-cards available on the system
+ + "List Save" menu command - save current playlist to a file
+ + "List Load" menu command - load playlist from file
+ + New settings:
+   + "Disable Lock-Screen Notification"
+   + "Trash directory"
+   + "Encoder bitrate"
+ * "File Delete" moves files to Trash directory by default
+ * Update the current playback progress on notification
 </pre>
 
 			<a href="https://raw.githubusercontent.com/stsaz/fmedia/master/CHANGES.txt">See full history</a>
@@ -255,10 +274,15 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 			<ol>
 				<li>
 					<p>
-						Unpack archive to the directory of your choice, e.g. to <code>/usr/local/fmedia-1</code>:
+						Unpack archive to the directory of your choice, e.g. to your home directory (<code>~/bin/fmedia-1</code>):
 					</p>
 
-					<pre><code>tar Jxf ./fmedia-1.0-linux-amd64.tar.xz -C /usr/local</code></pre>
+					<pre><code>mkdir -p ~/bin
+tar Jxf ./fmedia-1.0-linux-amd64.tar.xz -C ~/bin</code></pre>
+				</li>
+
+				<li>
+					<p>Run <code>~/bin/fmedia-1/fmedia --gui</code> to open graphical interface;  or execute commands via <code>~/bin/fmedia-1/fmedia</code> from console.</p>
 				</li>
 
 				<li>
@@ -266,15 +290,20 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 						Optionally, create a symbolic link:
 					</p>
 
-					<pre><code>ln -s /usr/local/fmedia-1/fmedia /usr/local/bin/fmedia</code></pre>
+					<pre><code>ln -s ~/bin/fmedia-1/fmedia ~/bin/fmedia</code></pre>
+				</li>
+
+				<li>
+					<p>Now you can run <code>fmedia --gui</code> to open graphical interface;  or execute commands via <code>fmedia</code> from console.</p>
 				</li>
 			</ol>
 
 			<h3 id="install-android">INSTALL ON ANDROID</h3>
 			<ol>
-				<li>Enable "Allow installation from unknown sources" option in your phone's settings (you can disable it again after installation)</li>
-				<li>Download .apk file to your phone's storage and execute it</li>
-				<li>Click <b>Install</b> button and wait a couple seconds</li>
+				<li>To be able to install .apk you need to enable "Allow installation from unknown sources" option in your phone's settings (you can disable it again after installation).</li>
+				<li>Download .apk file to your phone's storage and install it.</li>
+				<li>Click <b>Install</b> button and wait a couple seconds.</li>
+				<li>You can also install .apk file from PC with <code>adb install</code>.</li>
 			</ol>
 
 		</section>
