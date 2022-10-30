@@ -78,6 +78,11 @@ input.submit:hover {
 	cursor: pointer;
 }
 
+code {
+	padding: .2em .4em;
+	border-radius: 7px;
+}
+
 pre {
 	font-size: 13px;
 	font-family: Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
