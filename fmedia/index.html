@@ -183,7 +183,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Android*</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/android-v0.7/fmedia-0.7-android.apk" class="download__link">armeabi-v7a|arm64-v8a</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/android-v0.8/fmedia-0.8-android.apk" class="download__link">armeabi-v7a|arm64-v8a</a>
 					</div>
 				</div>
 			</div>
@@ -213,11 +213,15 @@ You'll find more detailed information about fmedia in <a href="https://github.co
  - .aac read: fix crash
 </pre>
 
-<pre>fmedia/Android v0.7 - Dec 4, 2022
+<pre>fmedia/Android v0.8 - Dec 18, 2022
 
- + .mp3 -> .mp3 cut/copy via "File: Cut" menu command
- * Remove track from playlist after playback error
-    and start playing next track
+ + .mp3 -> .m4a(AAC-LC) conversion
+   (~1.5sec/min on modern arm64 phone)
+   (~7sec/min on old arm phone)
+ + .m4a -> .m4a stream copy
+ * .mp3 copy: copy id3v2+id3v1 tags
+ + new setting:
+   Playback: "Remove Track From Playlist After I Tap Next"
 </pre>
 
 			<a href="https://raw.githubusercontent.com/stsaz/fmedia/master/CHANGES.txt">See full history</a>
