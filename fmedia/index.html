@@ -183,7 +183,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Android*</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/android-v0.9/fmedia-0.9-android.apk" class="download__link">armeabi-v7a|arm64-v8a</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/android-v0.10/fmedia-0.10-android.apk" class="download__link">armeabi-v7a|arm64-v8a</a>
 					</div>
 				</div>
 			</div>
@@ -213,20 +213,17 @@ You'll find more detailed information about fmedia in <a href="https://github.co
  - .aac read: fix crash
 </pre>
 
-<pre>fmedia/Android v0.9 - Dec 31, 2022
+<pre>fmedia/Android v0.10 - Jan 15, 2023
 
- + Convert: AAC decode; FLAC decode/encode; .flac write
- + Convert: new settings:
-   + "Output Directory"
-   + "Move Input File to Trash"
-   + "Set To Current"
-   + "Add New File to Playlist"
- + New setting: "App Data Directory"
- + Open playlists (.m3u) from "Explorer"
-   * Remove command "List: Load"
- + "List: Save" now works on old devices too
- + New command: "List: Switch L1/L2"
- + New command: "List: Add Current to L2"
+ + Record via AAudio (native audio interface since Android 8).  Settings:
+   + Buffer Length
+   + Gain/Attenuate filter
+   + Autostop timer
+ + New settings:
+   + "Show Audio Info in Title"
+   + "Remove Track From Playlist On Error"
+ *! Set "Trash" directory relative to storage mount-point
+ * List Save: warn when file already exists
 </pre>
 
 			<a href="https://raw.githubusercontent.com/stsaz/fmedia/master/CHANGES.txt">See full history</a>
