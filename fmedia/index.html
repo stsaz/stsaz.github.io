@@ -131,7 +131,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Windows</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/v1.29.1/fmedia-1.29.1-win-x64.zip" class="download__link">64-bit</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/v1.30/fmedia-1.30-win-x64.zip" class="download__link">64-bit</a>
 					</div>
 					<div class="download__platform">
 						<a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-win-x64old.zip" class="download__link">64-bit pre-2011</a>
@@ -147,7 +147,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Linux</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/v1.29.1/fmedia-1.29.1-linux-amd64.tar.xz" class="download__link">x86-64</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/v1.30/fmedia-1.30-linux-amd64.tar.xz" class="download__link">x86-64</a>
 					</div>
 					<div class="download__platform">
 						<a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-linux-amd64old.tar.xz" class="download__link">x86-64 pre-2011</a>
@@ -200,17 +200,22 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 		<section>
 			<h2 id="changes">CHANGES</h2>
 
-<pre>fmedia v1.29.1 - Sep 26, 2022
+<pre>fmedia v1.30 - Feb 20, 2023
 
- * GUI: "Analyze & Show PCM Info" supports .cue tracks
- + GUI/Windows: Record dialog: "Enable Dynamic Audio Normalizer" setting
- - GUI/Windows: Record dialog: audio format settings didn't work
- * GUI/Windows: save/restore the settings for Record & Convert dialogs
- - GUI/Windows: couldn't set an empty setting value in Record & Convert dialogs
- - GUI/Windows: Convert: seeking on .mp3 didn't work (v1.28 bug)
- - core: user config settings from fmedia-user.conf didn't work (v1.25.3beta bug)
- * "--until" now works with radio stream sources
- - .aac read: fix crash
+ + --playback-buffer=INT: Length (in msec) of the playback buffer
+ *! move mod/core.so -> core.so (Core isn't really a module)
+ * core: optimize fmedia.conf so that it's easier to embed fmedia into other projects
+   (it's no longer required to declare a module in fmedia.conf)
+ * --print-time: don't require '--debug' to get per-filter timings
+ * .mp3, .ape, .wv read: id3v1 codepage
+ * Linux: use libgio directly to trash files
+ * Vorbis write: skip 'picture' tag
+ * update to libFLAC-1.4.2
+ - PulseAudio: playback could hang if there's a problem with device
+ - .mp3 copy: copy id3v1 tag (v1.27.2 bug)
+ - .ogg write: fix hanging on trying to write a large packet (v1.29 bug)
+ - .ogg read: inaccurate seeking (v1.29 bug)
+ - GUI/Linux: incorrect audio-conversion settings were written into fmedia-user.conf
 </pre>
 
 <pre>fmedia/Android v0.10 - Jan 15, 2023
