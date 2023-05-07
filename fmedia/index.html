@@ -183,12 +183,15 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Android*</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/android-v0.11/fmedia-0.11-android.apk" class="download__link">armeabi-v7a|arm64-v8a</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/android-v0.12/fmedia-0.12-android-arm64.apk" class="download__link">arm64</a>
+					</div>
+					<div class="download__platform">
+						<a href="https://github.com/stsaz/fmedia/releases/download/android-v0.12/fmedia-0.12-android-arm.apk" class="download__link">arm</a>
 					</div>
 				</div>
 			</div>
 
-			<p><b>Self-contained</b>. fmedia uses modified versions of 3rd party libraries: libALAC, libfdk-aac, libFLAC, libMAC, libmp3lame, libmpg123, libmpc, libogg, libopus, libsoxr, libvorbisenc, libvorbis, libwavpack, libDynamicAudioNormalizer.  Everything is inside the package, so no additional dependencies are required to be installed on your system.</p>
+			<p><b>Self-contained</b>. fmedia uses modified versions of 3rd party libraries: libALAC, libfdk-aac, libFLAC, libMAC, libmp3lame, libmpg123, libmpc, libogg, libopus, libsoxr, libvorbisenc, libvorbis, libwavpack, libDynamicAudioNormalizer, libzstd.  Everything is inside the package, so no additional dependencies are required to be installed on your system.</p>
 
 			<p><b>Portable</b>. No installation, just uncompress the package anywhere you want!</p>
 
@@ -218,14 +221,13 @@ You'll find more detailed information about fmedia in <a href="https://github.co
  - GUI/Linux: incorrect audio-conversion settings were written into fmedia-user.conf
 </pre>
 
-<pre>fmedia/Android v0.11 - Mar 19, 2023
+<pre>fmedia/Android v0.12 - May 7, 2023
 
- + Convert: ALAC decoder
- + Convert: "Sample Rate" setting
- * Convert: Auto-Trash: remove item from list
- + Recording: new setting "Encoder (AAC-LC | AAC-HE | AAC-HEv2 | FLAC)"
- + UI: Playlist Save: choose output directory
- * UI: Show Tags: copy tag's value to clipboard on click
+ * compress auto-loaded playlists with zstd
+   ("/storage/fmedia/list1.m3uz")
+ + playlist view: show artist-title-duration info
+ + "File: Quick Move" command
+ - .mp4(AAC) write: don't write incorrect VBR bitrate & sample rate values
 </pre>
 
 			<a href="https://raw.githubusercontent.com/stsaz/fmedia/master/CHANGES.txt">See full history</a>
