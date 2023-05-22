@@ -131,10 +131,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Windows</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/v1.30/fmedia-1.30-windows-x64.zip" class="download__link">64-bit</a>
-					</div>
-					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-win-x64old.zip" class="download__link">64-bit pre-2011</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/v1.31/fmedia-1.31-windows-x64.zip" class="download__link">64-bit</a>
 					</div>
 					<div class="download__platform">
 						<a href="https://github.com/stsaz/fmedia/releases/download/v1.15/fmedia-1.15-win-x86.zip" class="download__link">x86 (32-bit)</a>
@@ -147,10 +144,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</svg>
 					<div class="download__title">Linux</div>
 					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/v1.30/fmedia-1.30-linux-amd64.tar.xz" class="download__link">x86-64</a>
-					</div>
-					<div class="download__platform">
-						<a href="https://github.com/stsaz/fmedia/releases/download/v1.28/fmedia-1.28-linux-amd64old.tar.xz" class="download__link">x86-64 pre-2011</a>
+						<a href="https://github.com/stsaz/fmedia/releases/download/v1.31/fmedia-1.31-linux-amd64.tar.xz" class="download__link">x86-64</a>
 					</div>
 					<div class="download__platform">
 						<a href="https://github.com/stsaz/fmedia/releases/download/v0.31/fmedia-0.31-linux-i686.tar.xz" class="download__link">i686 (32-bit)</a>
@@ -203,22 +197,24 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 		<section>
 			<h2 id="changes">CHANGES</h2>
 
-<pre>fmedia v1.30 - Feb 20, 2023
+<pre>fmedia v1.31 - May 21, 2023
 
- + --playback-buffer=INT: Length (in msec) of the playback buffer
- *! move mod/core.so -> core.so (Core isn't really a module)
- * core: optimize fmedia.conf so that it's easier to embed fmedia into other projects
-   (it's no longer required to declare a module in fmedia.conf)
- * --print-time: don't require '--debug' to get per-filter timings
- * .mp3, .ape, .wv read: id3v1 codepage
- * Linux: use libgio directly to trash files
- * Vorbis write: skip 'picture' tag
- * update to libFLAC-1.4.2
- - PulseAudio: playback could hang if there's a problem with device
- - .mp3 copy: copy id3v1 tag (v1.27.2 bug)
- - .ogg write: fix hanging on trying to write a large packet (v1.29 bug)
- - .ogg read: inaccurate seeking (v1.29 bug)
- - GUI/Linux: incorrect audio-conversion settings were written into fmedia-user.conf
+ + --http-ctl="&lt;IP&gt;": Enable HTTP server for handling remote commands
+   This option allows fmedia to be remotely controlled using web browser.
+   Server address is "http://&lt;IP&gt;:7314/".
+   Supported commands:
+     "POST /api/pause": Pause
+     "POST /api/unpause": Unpause
+     "POST /api/next": Play next track
+
+ + --playlist-heal="": Auto-correct the paths to files inside a .m3u playlist
+ * TUI: colored output
+ * GUI: compress auto-loaded playlists with zstd ("listN.m3uz")
+ * Recording: support --dev=... together with --record
+ * Restore support for old AMD64 CPU (without SSE4.2 support)
+ - Recording: finalize the output file while recording after --globcmd=stop
+ - .mp4(AAC) write: don't write incorrect VBR bitrate & sample rate values
+ - .ogg write: fix (v1.30 bug)
 </pre>
 
 <pre>fmedia/Android v0.12 - May 7, 2023
@@ -281,7 +277,7 @@ You'll find more detailed information about fmedia in <a href="https://github.co
 					</p>
 
 					<pre><code>mkdir -p ~/bin
-tar Jxf ./fmedia-1.0-linux-amd64.tar.xz -C ~/bin</code></pre>
+tar Jxf ./fmedia-1.*-linux-amd64.tar.xz -C ~/bin</code></pre>
 				</li>
 
 				<li>
@@ -574,16 +570,6 @@ fmedia ./file.wav --out=./file.mp3 --mpeg-quality=0 --rate=48000</code></pre>
 			<h2 id="feedback">FEEDBACK</h2>
 
 			Please report bugs to stsaz at pm dot me or create <a href="https://github.com/stsaz/fmedia/issues/new" target="_blank">an issue on GitHub</a>. Your suggestions and source code patches are also greatly appreciated.
-		</section>
-
-		<section>
-			<h2>MORE APPS FROM SIMON</h2>
-			<ul>
-			<li><a href="https://stsaz.github.io/fencedns/">fencedns</a> - fast ad-blocking DNS server</li>
-			<li><a href="https://github.com/stsaz/fcom">fcom</a> - file commander</li>
-			<li><a href="https://github.com/stsaz/aggressor">aggressor</a> - perform stress testing on an HTTP/1.1 server</li>
-			<li><a href="https://github.com/stsaz/alphahttpd">alphahttpd</a> - small HTTP/1.1 file server</li>
-			</ul>
 		</section>
 
 	</main>
